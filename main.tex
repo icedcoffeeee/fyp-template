@@ -1,0 +1,126 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[margin=2cm,lmargin=4cm]{geometry}
+\usepackage{parskip, indentfirst}
+\def\defparskip{0.5cm}
+\def\defparindent{0.5cm}
+\parskip=\defparskip
+\parindent=\defparskip
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext, newtxmath, fontspec}
+
+\usepackage{hyperref}
+\usepackage{titlesec, titletoc, chngcntr}
+\titleformat{\section}[hang]{\center\bfseries\MakeUppercase}{CHAPTER \thesection: }{0pt}{}
+\titleformat*{\subsection}{\bfseries}
+\titleformat*{\subsubsection}{\bfseries}
+
+\let\oldsection\section% Store \section
+\renewcommand{\section}{% Update \section
+  \renewcommand{\theequation}{\thesection.\arabic{equation}}% Update equation number
+  \oldsection}% Regular \section
+
+\titlecontents{figure}[0pt]{}{Figure \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
+\titlecontents{table}[0pt]{}{Table \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+\usepackage{graphicx, setspace, multicol, tikz, fancyhdr}
+\usepackage{caption, subcaption, float, enumitem, blindtext}
+\usepackage{physics, siunitx}
+\usepackage[]{apacite}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\fontsize{10pt}{10pt}\selectfont\thepage\normalsize}
+\renewcommand{\headrulewidth}{0pt}
+
+\setlist{parsep=0pt}
+\sisetup{separate-uncertainty=true}
+\setkeys{Gin}{width=\linewidth,height=0.2\textheight,keepaspectratio}
+\captionsetup{width=0.8\textwidth} %, font=bf}
+\usetikzlibrary{arrows.meta}
+
+% distance between floats
+\setlength{\textfloatsep}{1cm plus 1.0pt minus 1.0pt}
+\setlength{\intextsep}{1cm plus 1.0pt minus 1.0pt}
+\setlength{\floatsep}{1cm plus 1.0pt minus 1.0pt}
+
+\gdef\date{\today}
+\gdef\title{EXAMPLE TITLE}
+\gdef\titleMS{TAJUK CONTOH}
+\gdef\author{EXAMPLE AUTHOR}
+\gdef\matricno{XXXXXXXX}
+\gdef\IC{(XXXXXX-XX-XXXX)}
+
+\begin{document}
+
+\pagestyle{empty}
+\titlecontents{section}[0pt]{}{}{}{\titlerule*[9pt]{.}\contentspage}
+\input{frontmatter/frontpages.tex}
+\pagestyle{fancy}
+\pagenumbering{roman}
+\setcounter{page}{2}
+\input{frontmatter/original.tex}
+\input{frontmatter/abstract.tex}
+\input{frontmatter/acknowledgements.tex}
+
+\parskip=0pt
+\parindent=0pt
+\doublespacing
+
+\renewcommand{\contentsname}{Table of Contents}
+\phantomsection
+\addcontentsline{toc}{section}{\contentsname}
+\tableofcontents
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+\clearpage
+
+\parskip=1cm
+\parindent=0.5cm
+
+\onehalfspacing
+\parindent=0.5cm
+\parskip=0.5cm
+\pagenumbering{arabic}
+\titlecontents{section}[0pt]{\vspace*{1cm}}{\bfseries CHAPTER \thecontentslabel: \uppercase}{}{\titlerule*[9pt]{ }\contentspage}
+
+\input{content/introduction.tex}
+\input{content/problem-questions.tex}
+\input{content/objectives-relevance.tex}
+\clearpage
+\input{content/literature.tex}
+\clearpage
+\input{content/method.tex}
+\clearpage
+\input{content/results.tex}
+\clearpage
+\input{content/discussion.tex}
+\clearpage
+\input{content/conclusion.tex}
+\clearpage
+
+\titlecontents{section}[0pt]{\vspace*{1cm}}{}{}{\titlerule*[9pt]{.}\contentspage}
+
+\singlespacing
+\setlength{\bibitemsep}{\baselineskip}
+\phantomsection
+\bibliographystyle{apacite}
+\bibliography{ref.bib}
+\clearpage
+
+\appendix % everything after this is an appendix
+\titleformat{\section}[hang]{\center\bfseries\uppercase}{APPENDIX \thesection: }{0pt}{}
+\titlecontents{section}[0pt]{}{Appendix \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
+
+\section{EXAMPLE}
+
+\end{document}
