@@ -3,7 +3,7 @@ Physics, Faculty of Science, Universiti Malaya.
 
 - ensure LaTeX is installed. Either:
     - online: register on `www.overleaf.com` and copy these files to a new project.
-    - windows: `winget install miktex.miktex` and launch `MikTeX Console`.
+    - windows: `winget install miktex.miktex strawberryperl.strawberryperl` and launch `MikTeX Console`.
     - ubuntu: `sudo apt install texlive-basic`.
 - run `latexmk --lualatex`
 
