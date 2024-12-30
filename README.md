@@ -14,6 +14,7 @@ Make sure to customize the following:
 1. `main.tex:52` Author,
 1. `main.tex:53` Matric No,
 1. `main.tex:54` IC No,
+1. `main.tex:90` Symbols and Abbreviations,
 1. `frontmatter/original.tex:24` Field of Study,
 1. `frontmatter/acknowledgements.tex` Acknowledgements,
 1. `content/` Everything in content folder.
