@@ -3,8 +3,10 @@
 *.blg
 *.fdb_latexmk
 *.fls
+*.synctex*
 *.lof
 *.log
 *.lot
 *.out
+*.ptc
 *.toc

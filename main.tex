@@ -54,6 +54,7 @@
 \gdef\IC{(XXXXXX-XX-XXXX)}
 
 \begin{document}
+\startcontents[default]
 
 \pagestyle{empty}
 \titlecontents{section}[0pt]{}{}{}{\titlerule*[9pt]{.}\contentspage}
@@ -71,17 +72,21 @@
 
 \renewcommand{\contentsname}{Table of Contents}
 \phantomsection
+\section*{\contentsname}
 \addcontentsline{toc}{section}{\contentsname}
-\tableofcontents
+\printcontents[default]{l}{0}{\setcounter{tocdepth}{2}}
 \clearpage
+
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
 \clearpage
+
 \phantomsection
 \addcontentsline{toc}{section}{\listtablename}
 \listoftables
 \clearpage
+
 \phantomsection
 \xdef\listsymbolname{List of Symbols and Abbreviations}
 \section*{\listsymbolname}
@@ -89,6 +94,15 @@
 \begin{tabular}{l>{:\hspace{0.5cm}}l}
 	EA & Example Abbreviation
 \end{tabular}
+\clearpage
+
+\phantomsection
+\xdef\listappendixname{List of Appendices}
+\section*{\listappendixname}
+\addcontentsline{toc}{section}{\listappendixname}
+\startcontents[appendix]
+\printcontents[appendix]{l}{0}{\setcounter{tocdepth}{2}}
+\stopcontents[appendix]
 \clearpage
 
 \parskip=1cm
@@ -124,10 +138,13 @@
 \bibliography{ref.bib}
 \clearpage
 
-\appendix % everything after this is an appendix
-\titleformat{\section}[hang]{\center\bfseries\uppercase}{APPENDIX \thesection: }{0pt}{}
+\stopcontents[default]
+\resumecontents[appendix]
+\appendix
+\titleformat{\section}[hang]{\center\bfseries\MakeUppercase}{APPENDIX \thesection: }{0pt}{}
 \titlecontents{section}[0pt]{}{Appendix \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
 
-\section{EXAMPLE}
+\input{content/appendices.tex}
 
+\stopcontents[appendix]
 \end{document}
