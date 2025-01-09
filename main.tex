@@ -15,11 +15,6 @@
 \titleformat*{\subsection}{\bfseries}
 \titleformat*{\subsubsection}{\bfseries}
 
-\let\oldsection\section% Store \section
-\renewcommand{\section}{% Update \section
-  \renewcommand{\theequation}{\thesection.\arabic{equation}}% Update equation number
-  \oldsection}% Regular \section
-
 \titlecontents{figure}[0pt]{}{Figure \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
 \titlecontents{table}[0pt]{}{Table \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
 \counterwithin{figure}{section}
@@ -27,7 +22,7 @@
 
 \usepackage{graphicx, setspace, multicol, tikz, fancyhdr}
 \usepackage{caption, subcaption, float, enumitem, blindtext}
-\usepackage{physics, siunitx}
+\usepackage{amsmath, physics, siunitx}
 \usepackage[]{apacite}
 
 \fancyhead{}
@@ -39,6 +34,7 @@
 \sisetup{separate-uncertainty=true}
 \setkeys{Gin}{width=\linewidth,height=0.2\textheight,keepaspectratio}
 \captionsetup{width=0.8\textwidth} %, font=bf}
+\numberwithin{equation}{section}
 \usetikzlibrary{arrows.meta}
 
 % distance between floats
